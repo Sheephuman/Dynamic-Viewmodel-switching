@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="800">
+    
+    <!--一つしか設定出来ない-->
+    <!--<Window.DataContext>
+        <local:ColorChangeModel/>
+    </Window.DataContext>-->
+
+
+
+    <Grid>
+        <!--バインディング　公開しているプロパティ名と同名の変数を直接割り当てる-->
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="74,51,0,0" TextWrapping="Wrap" 
+                     Text="{Binding Value}" Background="{Binding ColorValue}" VerticalAlignment="Top" Width="139">            
+        </TextBox>
+        <StackPanel>
+            <!--Bind名に使う変数はコマンドクラス-->
+            <Button x:Name="CountDown" Content="カウントダウン" HorizontalAlignment="Left" Margin="294,51,0,0"
+                    VerticalAlignment="Top" Width="75" Click="CountDown_Click"
+                    Command="{Binding CountDownCommand}" Background="{Binding CountDownCommand}"/>
+             
+            <Button 
+                x:Name="ColorChanger"
+                Content="ColorChange" HorizontalAlignment="Left" Margin="294,51,0,0"
+                    VerticalAlignment="Top" Width="75"
+                    Command="{Binding cochange}" Click="ColorChanger_Click"/>
+            <Button Content="textBoxを増やす" HorizontalAlignment="Left" Margin="294,51,0,0"
+                    VerticalAlignment="Top" Width="Auto"
+                    Command="{Binding CountDownCommand}"/>
+            
+        </StackPanel>
+    </Grid>
+</Window>
